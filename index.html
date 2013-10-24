@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sellingPages">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Selling Pages</title>
+		<meta name="description" content="">
+		<meta name="author" content="Craig Whitley">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	</head>
+
+	<body ngCloak ng-controller="IndexController"   >
+		<div> <div  ng-include="template"></div>
+			<header>
+				<a href="#/login">Login</a>
+                <br />
+				<a href="#/admin/area/create">Administrate Areas</a>
+                <br />
+                <a href="#/admin/user/create">Administrate Users</a>
+			</header>
+			<nav>
+
+			</nav>
+
+			<div class="container">
+				<ng-view>
+					 
+				</ng-view>
+			</div>
+
+			<footer>
+
+			</footer>
+		</div>
+
+		<script src="lib/jquery-2.0.3.min.js"></script>
+        <script src="lib/underscore.min.js"></script>
+        <script src="lib/bootstrap.min.js"></script>
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.min.js"></script>
+	    <script src="lib/angular-sanitize.js"></script>
+		<script src="lib/i18n/angular-locale_en-gb.js"></script>
+		<script src="lib/restangular.js"></script>
+        <script src="lib/app.js"></script>
+        <script src="lib/angular-facebook.js"> </script>
+        <Script src="controllers/IndexController.js"></Script>
+        <Script src="services/UserDataService.js"></Script>
+        <script src="app/admin/area/controllers/CreateAreaController.js"></script>
+        <script src="app/admin/user/controllers/CreateUserController.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	</body>
+</html>

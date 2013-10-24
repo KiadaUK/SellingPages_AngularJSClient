@@ -1,0 +1,54 @@
+<h2 >Create Area</h2>
+<form ng-submit="submitNewArea()">
+    <label for="area.areaName" >Area Name:</label>
+    <input type="text" ng-disabled="area.isCity" ng-model="area.areaName" id="areaName">
+    <br />
+    <label for="area.isCity">Is City:</label>
+    <input type="checkbox" ng-model="area.isCity" id="isCity">
+    <br />
+    <label ng-show="area.isCity" for="cityName">City Name:</label>
+    <input ng-show="area.isCity" ng-model="area.cityName" type="text" id="cityName">
+    <br />
+    <select ng-show="area.isCity" ng-model="areas.Areas.AreaName" ng-options="area.AreaName for area in areas.Areas">
+        <option value="">--Choose Area--</option>
+    </select>
+    <br />
+    <input type="submit" id="submitArea">
+    <br />
+</form>
+<h4>Available Areas: Debug </h4>
+<ul>
+    <li ng-repeat="area in areas.Areas">{{area.AreaName}}</li>
+</ul>
+
+<!--
+ 	<h2 >Create Area</h2>
+	<form ng-submit="submitNewArea()">
+	<label for="area.areaName" >Area Name:</label>
+	<input type="text" ng-disabled="area.isCity" ng-model="area.areaName" id="areaName">
+	<br />
+	<label for="area.isCity">Is City:</label>
+	<input type="checkbox" ng-model="area.isCity" id="isCity">
+	<br />
+	<label ng-show="area.isCity" for="cityName">City Name:</label>
+	<input ng-show="area.isCity" ng-model="area.cityName" type="text" id="cityName">
+	<br />
+	<select ng-show="area.isCity" ng-model="areas.Areas.AreaName" ng-options="area.AreaName for area in areas.Areas">
+		<option value="">--Choose Area--</option>
+	</select>
+	<br />
+	<input type="submit" id="submitArea">
+	<br />
+	</form>
+	<h4>Available Areas: Debug </h4>
+	<ul>
+		<li ng-repeat="area in areas.Areas">{{area.AreaName}}</li>
+	</ul>
+-->
+
+
+
+
+
+
+
