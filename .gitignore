@@ -228,8 +228,8 @@ Global.asax
 Global.asax.cs
 packages.config
 Routes.txt
-SellingPage.BootstrapAPI.csproj
-SellingPage.BootstrapAPI.csproj.user
+SellingPages.BootstrapAPI.csproj
+SellingPages.BootstrapAPI.csproj.user
 Web.config
 Web.Release.config
 
