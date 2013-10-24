@@ -37,9 +37,9 @@ sellingPages.controller('IndexController',
                     data: User,
                     headers: {'Content-Type' : 'application/json'}}).success(function(User, status, headers, config) {
 
-                        console.log("Success");
+                        // console.log("Success");
                         $scope.setNewUserToUserDataService(User);
-                        console.log(JSON.stringify(User, null, 4));
+                        //console.log(JSON.stringify(User, null, 4));
 
                     }).error(function(User, status, headers, config){
 
@@ -52,8 +52,8 @@ sellingPages.controller('IndexController',
             {
 
                 userDataService.setUser(User.User);
-                var debugUser = userDataService.getUser();
-                console.log(JSON.stringify(debugUser, null, 4));
+                //var debugUser = userDataService.getUser();
+                //console.log(JSON.stringify(debugUser, null, 4));
             }
 
 

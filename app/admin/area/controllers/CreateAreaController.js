@@ -1,26 +1,26 @@
 'use strict';
 
 sellingPages.controller('CreateAreaController',
-	function CreateAreaController($scope, $http, userDataService){
+	function CreateAreaController($scope, $http, userDataService, areaDataService){
 
-		getAllAreas();
-        var debugUser = userDataService.getUser();
-        console.log(JSON.stringify(debugUser, null, 4));
-		function getAllAreas()
-		{
-			
-			$http.get(API_URL + 'areas').success(
-			function(data, status, headers, config) {
- 	    
- 		    $scope.areas = data;
- 	    
- 		    }).
+        //var debugUser = userDataService.getUser();
+        //console.log(JSON.stringify(debugUser, null, 4));
 
- 	 	   error(function(data, status, headers, config) {
 
- 		    });
-		}
-		
+        // Call getAllAreas from the areaDataService, and wait for the $http.get promise ajax
+        // to complete and return the data before proceeding.
+        $scope.getAllAreas = function()
+        {
+            areaDataService.getAllAreas().then(function(response)
+            {
+                $scope.areas = response;
+                //console.log(JSON.stringify($scope.areas, null, 4));
+            })
+
+        }
+
+        $scope.getAllAreas();
+
 		$scope.submitNewArea = function()
 		{
 
@@ -32,22 +32,21 @@ sellingPages.controller('CreateAreaController',
              * "CityName":"String",
              * "IsCity":false,
              * "AreasCityIds":[0],
-             * "AreaListingIds":[0]
-             * }
+             * "AreaListingIds":[0]}
              **/
 		    if (this.area.isCity == true)
 		    {
     	         var Area = {
     	        "AreaId"   : this.areas.Areas.AreaName.AreaId,
                 "CityName" : this.area.cityName,
-                "isCity" : this.area.isCity
+                "isCity" : true
                 }
 		    }	    
 		    else if (this.area.isCity == false || this.area.isCity == null)
 		    {
                     var Area = {
 		            "AreaName" : this.area.areaName,
-		            "isCity" : this.area.isCity
+		            "isCity" : false
 		        }
 		    }
 
@@ -56,14 +55,22 @@ sellingPages.controller('CreateAreaController',
                 url: API_URL + 'area',
                 data: Area,
                 headers: {'Content-Type' : 'application/json'}}).success(function(Area, status, headers, config) {
-
-                    getAllAreas();
+                     $scope.SetNewAreaToAreaService(Area)
+                     //console.log(JSON.stringify(Area, null, 4));
+                     $scope.getAllAreas();
 
             }).error(function(Area, status, headers, config){
 
 
 
             });
+
+            $scope.SetNewAreaToAreaService = function (Area)
+            {
+                areaDataService.setArea(Area.Area);
+                //var debugUser = areaDataService.getArea();
+                //console.log(JSON.stringify(debugUser, null, 4));
+            }
         }
     });
 		
